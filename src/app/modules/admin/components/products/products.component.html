@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+  <div class="row">
+    <h5>Meus Produtos.</h5>
+    <button type="button" class="btn btn-primary" (click)="openModal(template)" >Adicionar
+      Produto</button>
+    <hr>
+  </div>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">Nome:</th>
+        <th scope="col">Descrição:</th>
+        <th scope="col">Preço:</th>
+        <th scope="col">Data:</th>
+        <th scope="col">Categorias:</th>
+        <th scope="col">Imagem:</th>
+        <th scope="col">Ação:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of allProdutosData">
+        <td>{{prod.nome}}</td>
+        <td>{{prod.preco}}</td>
+        <td>{{prod.descricao}}</td>
+        <td>{{prod.data}}</td>
+        <td>{{prod.imagem}}</td>
+        <td>{{prod.categoria}}</td>
+        <td>
+          <button (click)="editProd(prod)" type="button" class="btn btn-info">Editar</button>
+          <button (click)="deleteProd(prod)" class="btn btn-danger">Deletar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formValue"(ngSubmit)="addProduto()">
+      <div class="mb-3">
+        <label class="form-label">Name:</label>
+        <input formControlName="nome" placeholder="Digite seu Nome" type="name" class="form-control" style="width: 26em" id="exampleInputEmail1" aria-describedby="emailHelp">
+       </div>
+       <div class="campo ml-3">
+        <br>
+        <label class="form-label"></label>
+        <textarea formControlName="descricao" rows="3"  class="form-control"style="width: 26em"  placeholder="Driscrição"></textarea>
+      </div>
+      <div class="campo row-3">
+        <input formControlName="valor" placeholder="Preço" type="name" class="form-control"style="width: 26em" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input formControlName="data" class="form-control"style="width: 26em" id="date"placeholder="Data Remessa"  type="date">
+      </div>
+      <input formControlName="categoria" placeholder="Categorias" type="name" class="form-control"style="width: 26em" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div class="campo ml-3">
+        <br>
+        <label class="form-label"></label>
+        <textarea formControlName="imagem" rows="3"  class="form-control"style="width: 26em"  placeholder="Arraste uma imagem ou"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button type="submit" class="btn btn-danger">Cancelar</button>
+    </form>
+  </div>
+</ng-template>
+
+</div>
+

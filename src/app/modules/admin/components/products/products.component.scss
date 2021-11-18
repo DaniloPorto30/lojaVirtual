@@ -1,0 +1,51 @@
+.container-fluid {
+  top: 0px;
+  left: 0px;
+  width: 1366px;
+  height: 668px;
+  background: #f4f4f4 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.container-fluid h5 {
+  margin-top: 26px;
+  margin-left: 62px;
+  width: 355px;
+  text-align: left;
+  font: normal normal bold 32px Proxima Nova;
+  letter-spacing: 0px;
+  color: #1f1f1f;
+  opacity: 1;
+  margin-bottom: 32px;
+}
+.row hr {
+  top: 136px;
+  margin-left: 64px;
+  margin-right: 67px ;
+  width: 1198px;
+  height: 0px;
+  border: 1px solid #cccccc;
+  opacity: 1;
+}
+.row button {
+  background-color: #725172;
+  height: 44px;
+  width: 169px;
+  margin-left: 715px;
+  margin-top: 15px;
+  color: #ffffff;
+}
+.row {
+  margin: 0 auto;
+}
+
+$background-color: #252525 !important;
+$font-color: #ffff !important;
+
+.ui-card {
+  background-color: $background-color;
+  color: $font-color;
+}
+.container ng-template
+{
+  width: 120px;
+}

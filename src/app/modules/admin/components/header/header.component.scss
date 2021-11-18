@@ -1,0 +1,28 @@
+*{
+  text-decoration: none;
+}
+.navbar{
+  width: 1366px;
+  margin: 0 auto;
+  height: 56px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 2px 6px #A8A8A829;
+  opacity: 1;
+}
+ .nav-item{
+  margin-left: 60px;
+  font-family: 'nova-bold', sans-serif;
+  letter-spacing: 0px;
+  opacity: 1;
+
+  font-size: 16px;
+}
+.nav-item a{
+  color: #000000;
+}
+#logo{
+  margin-left: -68px;
+}
+#login{
+   margin-right: -128px ;
+}
