@@ -11,16 +11,17 @@
   margin-left: 62px;
   width: 355px;
   text-align: left;
-  font: normal normal bold 32px Proxima Nova;
   letter-spacing: 0px;
   color: #1f1f1f;
   opacity: 1;
+  font-weight: bold;
   margin-bottom: 32px;
+  font-size:26px ;
 }
 .row hr {
   top: 136px;
   margin-left: 64px;
-  margin-right: 67px ;
+  margin-right: 67px;
   width: 1198px;
   height: 0px;
   border: 1px solid #cccccc;
@@ -38,14 +39,91 @@
   margin: 0 auto;
 }
 
-$background-color: #252525 !important;
-$font-color: #ffff !important;
-
-.ui-card {
-  background-color: $background-color;
-  color: $font-color;
+/* Filmes Grid */
+.filmes-grid {
+  display: grid;
+  grid-gap: 16px;
+  padding: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(13%, 1fr));
 }
-.container ng-template
-{
-  width: 120px;
+.filmes-grid .image {
+  margin: auto;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.774);
+  border-radius: 5px;
+  margin-top: 25px;
+}
+.filmes-grid img {
+  width: 239px;
+  height: 138px;
+}
+
+.filmes-grid .box {
+  width: 295px;
+  height: 392px;
+  box-shadow: 0 0 5px #f4f4f4;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  text-align: center;
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.726);
+  position: relative;
+  transition: 0.1s;
+  margin: 0 auto;
+}
+.filmes-grid .info #descricao {
+  margin: 10px 0px 0px 0px;
+  font-size: 16px;
+  flex-wrap: wrap;
+  text-align: start;
+  color: #505050;
+  opacity: 1;
+  font-weight: bold;
+  font-weight: 500;
+}
+.filmes-grid .info h5 {
+  margin-left: 20px;
+  margin: 20px 20px 0px 0px;
+  font-size: 18px;
+}
+.filmes-grid .info {
+  width: 265px;
+  bottom: 0px;
+  padding-top: 5px;
+  height: auto;
+}
+.filmes-grid .info #valor {
+  font-size: 20px;
+  text-align: start;
+  font-weight: bold;
+  color: #1f1f1f;
+  margin-top:10px ;
+}
+.filmes-grid .info #btn {
+  border: 1px solid #725172;
+  border-radius: 30px;
+  opacity: 1;
+  height: 31px;
+  padding-top: 3px;
+  top: 497px;
+  left: 1027px;
+  width: 77px;
+  font-size: 14px;
+  color: #725172;
+  margin-right: 15px;
+}
+
+.filmes-grid .info #btn2 {
+  border: 1px solid #725172;
+  border-radius: 30px;
+  opacity: 1;
+  height: 31px;
+  padding-top: 3px;
+  width: 99px;
+  font-size: 14px;
+  color: #725172;
+}
+#tree{
+  background-color: brown;
+  color:blue;
 }

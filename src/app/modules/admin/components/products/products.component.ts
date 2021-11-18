@@ -11,6 +11,11 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class ProductsComponent implements OnInit {
 
+  MacBookPro2021: string = "/src/assets/img/MacBookPro2019.png";
+  MacBookAir2020: string = "/src/assets/img/MacBookAir2020.png";
+  MacBookAir2021: string = "/src/assets/img/MacBookAir2021.png";
+  MacBookPro2019: string = "/src/assets/img/MacBookPro2016.png";
+
   formValue!: FormGroup
   produtoModel :ProdutosData = new ProdutosData;
   modalRef?: BsModalRef | null;

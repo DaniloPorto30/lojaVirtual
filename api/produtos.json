@@ -1,22 +1,41 @@
 {
   "produtos": [
     {
-      "id": 11,
-      "nome": "Smartphone Motorola Moto E7 Power 32GB 4G Wi-Fi Tela 6.5'' Dual Chip 2GB RAM Câmera Dupla + Selfie 5MP - Azul Metálico",
-      "descricao": "Desenvolvido com tecnologia de ponta, o Smartphone Motorola Moto E7 Power conta com processador octa-core ultrarrápido.\n\nCom câmera de ótima qualidade você pode tirar fotos incríveis e super nítidas, como a câmera dupla traseira de 13MP+2MP e frontal de 5MP para você fazer as melhores fotos com o efeito bokeh.\nSua tela de é de 6.5\" com tecnologia HD para que possa ver os filmes, séries, sites e jogos com uma qualidade ainda melhor, além de dar todo o conforto para segurá-lo com apenas uma mão.\nO Smartphone Motorola Moto E7 Power vem com o design moderno e o melhor, possui ótima duração de bateria. Ideal para você curtir os melhores momentos.\n\nSe busca por um smartphone tecnológico, com design moderno e ótima velocidade o Moto E7 Power é a melhor opção.",
+      "id": 1,
+      "nome": "MacBook Pro 2021 16",
+      "descricao": "MacBook Pro com a melhor tecnologia do mercado, trazendo muita inovação e velocidade.",
       "data": "2021-11-17",
-      "imagem": null,
+      "imagem":"https://m.media-amazon.com/images/I/41XgUQHMdjS._AC_SL1000_.jpg",
       "acao": null,
-      "valor": "854,05"
+      "valor": "R$ 17.499,00"
     },
     {
-      "id": 12,
-      "nome": "Smartphone Samsung Galaxy A02 32GB",
-      "descricao": "Desenvolvido com tecnologia, o Smartphone Samsung Galaxy A02 é um aparelho equipado com câmera dupla traseira, sendo a principal de 13MP, abertura de f/1.9 e uma macro de 2MP, para que você faça cliques incríveis. Além disso, conta com frontal de 5MP.\n\nCom design moderno e confortável para uso, sua tela é de 6.5 polegadas, resolução HD+ e tecnologia IPS LCD.\n\nUm dos diferenciais do Smartphone Samsung Galaxy A02 é a sua bateria de 5.000 mAh que tem capacidade para um melhor uso.\n",
+      "id": 2,
+      "nome": "MacBook Air 256GB 2020",
+      "descricao": "MacBook Air com a melhor tecnologia do mercado, trazendo muita inovação e velocidade.",
       "data": "2021-11-18",
-      "imagem": "",
+      "imagem": "https://m.media-amazon.com/images/I/31WWqmW1WaL._AC_.jpg",
       "acao": "",
-      "valor": "647,10"
+      "valor": "R$ 10.499,00"
+    },
+    {
+      "id": 3,
+      "nome": "MacBook Air 512 GB 2021",
+      "descricao": "MacBook Pro com a melhor tecnologia do mercado, trazendo muita inovação e velocidade.",
+      "data": "2021-11-17",
+      "imagem":"https://m.media-amazon.com/images/I/41XgUQHMdjS._AC_SL1000_.jpg",
+      "acao": null,
+      "valor": "R$ 13.499,00"
+    },
+    {
+      "id": 4,
+      "nome": "MacBook Pro 2019 16",
+      "descricao": "MacBook Air com a melhor tecnologia do mercado, trazendo muita inovação e velocidade.",
+      "data": "2021-11-18",
+      "imagem": "https://m.media-amazon.com/images/I/31WWqmW1WaL._AC_.jpg",
+      "acao": "",
+      "valor": "R$ 12.499,00"
     }
+
   ]
 }
