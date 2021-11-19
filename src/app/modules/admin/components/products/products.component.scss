@@ -39,26 +39,26 @@
   margin: 0 auto;
 }
 
-/* Filmes Grid */
-.filmes-grid {
+/* Products Grid */
+.produtos-grid {
   display: grid;
   grid-gap: 16px;
   padding: 12px;
   grid-template-columns: repeat(auto-fit, minmax(13%, 1fr));
 }
-.filmes-grid .image {
+.produtos-grid .image {
   margin: auto;
   width: 90%;
   background-color: rgba(255, 255, 255, 0.774);
   border-radius: 5px;
   margin-top: 25px;
 }
-.filmes-grid img {
+.produtos-grid img {
   width: 239px;
   height: 138px;
 }
 
-.filmes-grid .box {
+.produtos-grid .box {
   width: 295px;
   height: 392px;
   box-shadow: 0 0 5px #f4f4f4;
@@ -71,7 +71,7 @@
   transition: 0.1s;
   margin: 0 auto;
 }
-.filmes-grid .info #descricao {
+.produtos-grid .info #descricao {
   margin: 10px 0px 0px 0px;
   font-size: 16px;
   flex-wrap: wrap;
@@ -81,25 +81,25 @@
   font-weight: bold;
   font-weight: 500;
 }
-.filmes-grid .info h5 {
+.produtos-grid .info h5 {
   margin-left: 20px;
   margin: 20px 20px 0px 0px;
   font-size: 18px;
 }
-.filmes-grid .info {
+.produtos-grid .info {
   width: 265px;
   bottom: 0px;
   padding-top: 5px;
   height: auto;
 }
-.filmes-grid .info #valor {
+.produtos-grid .info #valor {
   font-size: 20px;
   text-align: start;
   font-weight: bold;
   color: #1f1f1f;
   margin-top:10px ;
 }
-.filmes-grid .info #btn {
+.produtos-grid .info #btn {
   border: 1px solid #725172;
   border-radius: 30px;
   opacity: 1;
@@ -113,7 +113,7 @@
   margin-right: 15px;
 }
 
-.filmes-grid .info #btn2 {
+.produtos-grid .info #btn2 {
   border: 1px solid #725172;
   border-radius: 30px;
   opacity: 1;
