@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     FontAwesomeModule,
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

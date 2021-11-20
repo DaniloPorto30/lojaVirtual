@@ -3,27 +3,37 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProdutosData } from 'src/app/produto.model';
 import { ApiService } from 'src/app/shared/api.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  providers: [
+    {
+      provide: BsDropdownConfig,
+      useValue: { isAnimated: true, autoClose: true },
+    },
+  ],
 })
 export class ProductsComponent implements OnInit {
+  MacBookPro2021: string = '/src/assets/img/MacBookPro2019.png';
+  MacBookAir2020: string = '/src/assets/img/MacBookAir2020.png';
+  MacBookAir2021: string = '/src/assets/img/MacBookAir2021.png';
+  MacBookPro2019: string = '/src/assets/img/MacBookPro2016.png';
 
-  MacBookPro2021: string = "/src/assets/img/MacBookPro2019.png";
-  MacBookAir2020: string = "/src/assets/img/MacBookAir2020.png";
-  MacBookAir2021: string = "/src/assets/img/MacBookAir2021.png";
-  MacBookPro2019: string = "/src/assets/img/MacBookPro2016.png";
-
-  formValue!: FormGroup
-  produtoModel :ProdutosData = new ProdutosData;
+  formValue!: FormGroup;
+  produtosModel: ProdutosData = new ProdutosData();
   modalRef?: BsModalRef | null;
   modalRef2?: BsModalRef;
   allProdutosData: any;
+  data: any;
 
-  constructor(private formBuilder: FormBuilder, private api:ApiService,
-    private modalService: BsModalService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private api: ApiService,
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
@@ -33,66 +43,45 @@ export class ProductsComponent implements OnInit {
       data: [''],
       categorias: [''],
       imagem: [''],
-      acao: [''],
-      valor:['']
-    })
+      valor: [''],
+    });
     this.getAllData();
   }
-addProduto(){
-  this.produtoModel.nome = this.formValue.value.nome;
-  this.produtoModel.descricao = this.formValue.value.descricao;
-  this.produtoModel.data = this.formValue.value.data;
-  this.produtoModel.categoria = this.formValue.value.categoria;
-  this.produtoModel.imagem = this.formValue.value.imagem;
-  this.produtoModel.acao = this.formValue.value.acao;
-  this.produtoModel.valor = this.formValue.value.valor;
+  addProduto() {
+    this.produtosModel.nome = this.formValue.value.nome;
+    this.produtosModel.descricao = this.formValue.value.descricao;
+    this.produtosModel.data = this.formValue.value.data;
+    this.produtosModel.imagem = this.formValue.value.imagem;
+    this.produtosModel.valor = this.formValue.value.valor;
+    this.produtosModel.categoria = this.formValue.value.categorias;
+    this.api.postProduto(this.produtosModel).subscribe(
+      (res) => {
+        console.log(res);
+        alert('Produto adicionado com Sucesso!');
 
-  this.api.postProduto(this.produtoModel).subscribe(res=>{
-    console.log(res);
-    alert("Produto adicionado com Sucesso!");
+        let ref = document.getElementById('clear');
+        ref?.click();
 
-    let ref = document.getElementById('clear');
-    ref?.click();
-
-    this.formValue.reset()
-    this.getAllData()
-  },
-  err=>{
-    alert("Erro ao adicionar produto!");
+        this.formValue.reset();
+        this.getAllData();
+      },
+      (err) => {
+        alert('Erro ao adicionar produto!');
+      }
+    );
   }
-  )
-}
-
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, { id: 1, class: 'modal-md' });
-  }
-  openModal2(template: TemplateRef<any>) {
-    this.modalRef2 = this.modalService.show(template, {id: 2, class: 'second' });
-  }
-  closeFirstModal() {
-    if (!this.modalRef) {
-      return;
-    }
-
-    this.modalRef.hide();
-    this.modalRef = null;
-  }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
-  }
-
-  getAllData(){
-    this.api.getProdutos().subscribe(res=>{
+  getAllData() {
+    this.api.getProdutos().subscribe((res) => {
       this.allProdutosData = res;
-    })
+    });
   }
-  deleteProd(prod:any){
-  this.api.deleteProdutos(prod.id).subscribe(res=>{
-    alert("Produto Deletado!")
-    this.getAllData();
-  })
+  deleteProd(prod: any) {
+    this.api.deleteProdutos(prod.id).subscribe((res) => {
+      alert('Produto Deletado!');
+      this.getAllData();
+    });
   }
-  editProd(prod:any){
+  editProd(prod: any) {
     this.formValue.controls['nome'].setValue(prod.name);
     this.formValue.controls['descricao'].setValue(prod.descricao);
     this.formValue.controls['data'].setValue(prod.data);
@@ -100,4 +89,39 @@ addProduto(){
     this.formValue.controls['imagem'].setValue(prod.imagem);
     this.formValue.controls['valor'].setValue(prod.valor);
   }
+
+  updateProd() {
+    this.produtosModel.nome = this.formValue.value.nome;
+    this.produtosModel.descricao = this.formValue.value.descricao;
+    this.produtosModel.data = this.formValue.value.data;
+    this.produtosModel.imagem = this.formValue.value.imagem;
+    this.produtosModel.valor = this.formValue.value.valor;
+    this.produtosModel.categoria = this.formValue.value.categorias;
+
+    this.api
+      .updateProdutos(this.produtosModel, this.produtosModel.id)
+      .subscribe((res) => {
+        alert('Produto atualizado!');
+        let ref = document.getElementById('clear');
+        ref?.click();
+
+        this.formValue.reset();
+        this.getAllData();
+      });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+  openModall(templatee: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(templatee);
+  }
+  openModaleditar(templateeditar: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(templateeditar);
+  }
+  openModaldeletar(templatedeletar: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(templatedeletar);
+  }
 }
+
+export class MenuIconsExample {}

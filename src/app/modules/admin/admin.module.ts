@@ -7,7 +7,9 @@ import { ProductsComponent } from './components/products/products.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     HomeComponent,
     AdminPageComponent
-
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    MatMenuModule
   ]
 })
 export class AdminModule { }

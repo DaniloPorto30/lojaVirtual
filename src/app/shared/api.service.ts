@@ -8,24 +8,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
 
   postProduto(data: any) {
-    return this.http.post<any>('http://localhost:3000/produtos', data).pipe(
+    return this._http.post<any>('http://localhost:3000/produtos', data).pipe(
       map((res: any) => {
         return res;
       })
     );
   }
   getProdutos() {
-    return this.http.get<any>('http://localhost:3000/produtos').pipe(
+    return this._http.get<any>('http://localhost:3000/produtos').pipe(
       map((res: any) => {
         return res;
       })
     );
   }
   updateProdutos(data: any, id: number) {
-    return this.http
+    return this._http
       .put<any>('http://localhost:3000/produtos/' + id, data)
       .pipe(
         map((res: any) => {
@@ -34,7 +34,7 @@ export class ApiService {
       );
   }
   deleteProdutos(id: number) {
-    return this.http.delete<any>('http://localhost:3000/produtos/' + id).pipe(
+    return this._http.delete<any>('http://localhost:3000/produtos/' + id).pipe(
       map((res: any) => {
         return res;
       })
