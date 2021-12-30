@@ -15,6 +15,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,10 @@ import { MatMenuModule } from '@angular/material/menu';
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
-    MatMenuModule
+    MatMenuModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger', // set defaults here
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

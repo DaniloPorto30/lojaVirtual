@@ -7,8 +7,13 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  popoverTitle = 'Popover title';
+  popoverMessage = 'Popover description';
+  confirmClicked = false;
+  cancelClicked = false;
+  image = 'assets/img/menu.png';
   modalRef?: BsModalRef;
+
 
   constructor(private modalService: BsModalService) {}
   openModal(template: TemplateRef<any>) {
@@ -16,5 +21,7 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+
+
 }
 

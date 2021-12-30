@@ -1,6 +1,6 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ProdutosData } from 'src/app/produto.model';
+import { Produto } from 'src/app/produto.model';
 import { ApiService } from 'src/app/shared/api.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
@@ -17,17 +17,22 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
   ],
 })
 export class ProductsComponent implements OnInit {
-  MacBookPro2021: string = '/src/assets/img/MacBookPro2019.png';
-  MacBookAir2020: string = '/src/assets/img/MacBookAir2020.png';
-  MacBookAir2021: string = '/src/assets/img/MacBookAir2021.png';
-  MacBookPro2019: string = '/src/assets/img/MacBookPro2016.png';
+  popoverTitle = 'Popover title';
+  popoverMessage = 'Popover description';
+  excluirClicked = false;
+  editeClicked = false;
+  image = 'assets/img/menu.png';
 
-  formValue!: FormGroup;
-  produtosModel: ProdutosData = new ProdutosData();
+  proDetail!: FormGroup;
+  proObjt : Produto = new Produto();
+  proList : Produto[] = [];
   modalRef?: BsModalRef | null;
   modalRef2?: BsModalRef;
   allProdutosData: any;
   data: any;
+  showAdd!: boolean;
+  showbtn!: boolean;
+  p: number = 1;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,93 +40,118 @@ export class ProductsComponent implements OnInit {
     private modalService: BsModalService
   ) {}
 
+
   ngOnInit(): void {
-    this.formValue = this.formBuilder.group({
-      nome: [''],
+    this.proDetail = this.formBuilder.group({
+      id : [''],
+      name : [''],
       descricao: [''],
-      preco: [''],
       data: [''],
-      categorias: [''],
-      imagem: [''],
-      valor: [''],
+      categoria:[''],
+      image:[''],
+      preco:[''],
+      service:[''],
     });
-    this.getAllData();
+
+    this.getAllProduto();
   }
   addProduto() {
-    this.produtosModel.nome = this.formValue.value.nome;
-    this.produtosModel.descricao = this.formValue.value.descricao;
-    this.produtosModel.data = this.formValue.value.data;
-    this.produtosModel.imagem = this.formValue.value.imagem;
-    this.produtosModel.valor = this.formValue.value.valor;
-    this.produtosModel.categoria = this.formValue.value.categorias;
-    this.api.postProduto(this.produtosModel).subscribe(
-      (res) => {
+    console.log(this.proDetail);
+    this.proObjt.id = this.proDetail.value.id;
+    this.proObjt.name = this.proDetail.value.name;
+    this.proObjt.descricao = this.proDetail.value.descricao;
+    this.proObjt.categoria = this.proDetail.value.categoria;
+    this.proObjt.data = this.proDetail.value.data;
+    this.proObjt.image = this.proDetail.value.image;
+    this.proObjt.preco = this.proDetail.value.preco;
+    this.proObjt.service = this.proDetail.value.service;
+
+    this.api.addProduto(this.proObjt).subscribe(res=>{
         console.log(res);
-        alert('Produto adicionado com Sucesso!');
+
 
         let ref = document.getElementById('clear');
         ref?.click();
 
-        this.formValue.reset();
-        this.getAllData();
-      },
-      (err) => {
-        alert('Erro ao adicionar produto!');
-      }
-    );
+        this.proDetail.reset();
+        this.getAllProduto();
+    },err=>{
+
+    });
+
   }
-  getAllData() {
-    this.api.getProdutos().subscribe((res) => {
-      this.allProdutosData = res;
+
+  getAllProduto() {
+    this.api.getAllProduto().subscribe(res=>{
+        this.proList = res;
+    },err=>{
+      console.log("error while fetching data.")
+
     });
   }
-  deleteProd(prod: any) {
-    this.api.deleteProdutos(prod.id).subscribe((res) => {
-      alert('Produto Deletado!');
-      this.getAllData();
+
+  editeProduto(pro : Produto) {
+    this.showAdd = false;
+    this.showbtn = true;
+    this.proDetail.controls['id'].setValue(pro.id);
+    this.proDetail.controls['name'].setValue(pro.name);
+    this.proDetail.controls['categoria'].setValue(pro.categoria);
+    this.proDetail.controls['data'].setValue(pro.data);
+    this.proDetail.controls['descricao'].setValue(pro.descricao);
+    this.proDetail.controls['image'].setValue(pro.image);
+    this.proDetail.controls['preco'].setValue(pro.preco);
+    this.proDetail.controls['service'].setValue(pro.service);
+  }
+
+  updateProduto() {
+
+    this.proObjt.id = this.proDetail.value.id;
+    this.proObjt.name = this.proDetail.value.name;
+    this.proObjt.descricao = this.proDetail.value.descricao;
+    this.proObjt.categoria = this.proDetail.value.categoria;
+    this.proObjt.data = this.proDetail.value.data;
+    this.proObjt.image = this.proDetail.value.image;
+    this.proObjt.preco = this.proDetail.value.preco;
+    this.proObjt.service = this.proDetail.value.service;
+
+    this.api.updateProduto(this.proObjt).subscribe(res=>{
+
+
+      let ref = document.getElementById('clear');
+      ref?.click();
+
+      this.getAllProduto();
+    },err=>{
+
+    })
+
+  }
+  deleteProduto(pro : Produto) {
+
+    this.api.deleteProduto(pro).subscribe(res=>{
+
+      this.getAllProduto();
+    },err => {
+      console.log(err);
     });
-  }
-  editProd(prod: any) {
-    this.formValue.controls['nome'].setValue(prod.name);
-    this.formValue.controls['descricao'].setValue(prod.descricao);
-    this.formValue.controls['data'].setValue(prod.data);
-    this.formValue.controls['categoria'].setValue(prod.categoria);
-    this.formValue.controls['imagem'].setValue(prod.imagem);
-    this.formValue.controls['valor'].setValue(prod.valor);
+
   }
 
-  updateProd() {
-    this.produtosModel.nome = this.formValue.value.nome;
-    this.produtosModel.descricao = this.formValue.value.descricao;
-    this.produtosModel.data = this.formValue.value.data;
-    this.produtosModel.imagem = this.formValue.value.imagem;
-    this.produtosModel.valor = this.formValue.value.valor;
-    this.produtosModel.categoria = this.formValue.value.categorias;
+// Pegar todos os dados da Api e dar um refresh atualizando os dados da tela
 
-    this.api
-      .updateProdutos(this.produtosModel, this.produtosModel.id)
-      .subscribe((res) => {
-        alert('Produto atualizado!');
-        let ref = document.getElementById('clear');
-        ref?.click();
-
-        this.formValue.reset();
-        this.getAllData();
-      });
+//trocar formulario adicionar por editar
+  clickAddprodutos() {
+    this.proDetail.reset();
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+// notificacao de sucesso ou erro
+  showSucesso() {
+
   }
-  openModall(templatee: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(templatee);
+  showErro() {
+
   }
-  openModaleditar(templateeditar: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(templateeditar);
-  }
-  openModaldeletar(templatedeletar: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(templatedeletar);
-  }
+
+
 }
 
-export class MenuIconsExample {}

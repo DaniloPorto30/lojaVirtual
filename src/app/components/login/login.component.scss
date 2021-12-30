@@ -31,24 +31,58 @@ input{
 }
 form{
   position: absolute;
+  margin-top: 0;
 }
 .login h1{
 margin-top: 147px;
 margin-left:92px;
 margin-right:92px;
+font-weight: bold;
+font-size: 36px;
 }
 .login hr{
   margin-top: 0px;
 }
-#forms1 input{
-  margin-top: 20px;
-  margin-bottom: 10px;
+
+
+#wrap{
+  position: absolute;
+  top:50px;
+  padding-bottom: 20px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#wrap2 input{
+  margin-top: 80px;
   padding-bottom: 10px;
 }
-#forms2 input{
-  margin-top: 20px;
-  padding-bottom: 10px;
+#span{
+  padding-left:15px;
+  color: #626262;
+  font-size: 16px;
 }
+#span{
+  margin-top:-30px;
+  position: absolute;
+  transition: all 10ms;
+  margin-left:100px;
+}
+
+input{
+display:block;
+font-size: 16px;
+}
+
+input:focus + #span{
+  margin-top: -55px;
+  font-size: 14px;
+  padding-left: 8px ;
+  padding-right: 8px ;
+  background-color: #FFFFFF;
+  color: #626262;
+}
+
+
 button
 {
   width: 384px;
@@ -79,4 +113,6 @@ button
   margin-bottom:0px;
   margin-right: 32px;
 }
+
+
 

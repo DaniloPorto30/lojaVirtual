@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MatMenuModule } from '@angular/material/menu';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { PopoverModule } from 'ngx-smart-popover';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,11 @@ import { MatMenuModule } from '@angular/material/menu';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
-    MatMenuModule
+    MatMenuModule,
+    ConfirmationPopoverModule.forRoot({
+
+    }),
+    PopoverModule
   ]
 })
 export class AdminModule { }

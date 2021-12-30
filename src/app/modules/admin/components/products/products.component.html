@@ -2,143 +2,147 @@
   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
   <div class="row">
     <h5>Meus Produtos.</h5>
-    <button type="button" class="btn" (click)="openModal(template)">Adicionar Produto</button>
+    <button (click)="clickAddprodutos()" type="submit" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#addProduto">Adicionar Produto</button>
     <hr>
   </div>
+
+
 <div class="produtos-grid">
   <div class="box"
-  *ngFor="let prod of allProdutosData">
+  *ngFor="let prod of proList ">
     <div class="image">
-        <img [src]="prod.imagem" alt="produtos">
-        <a (click)="openModall(templatee)">
-       <i class="fas fa-ellipsis-v" style="font-size:28px ;margin-top:-410px; margin-left: 80px; position: absolute;"></i></a>
+      <popover-content #myPopover
+      placement="left top"
+      [animation]="true"
+      [closeOnClickOutside]="true"
+      [closeOnMouseOutside]="true">
+      <i (click)="editeProduto(prod)" class="fas fa-pen-square" data-bs-toggle="modal" data-bs-target="#editeProduto">Editar</i>&nbsp;
+      <i (click)=" deleteProduto(prod)" class="fas fa-trash">Excluir</i>
+    </popover-content>
+  </div>
+  <img  [popoverOnHover]="false"  [popover]="myPopover" style="font-size:28px ; width:12px;height: 35px; margin-left: 120px;margin-top: -5px; position: absolute;" src="{{image}}" alt="produtos" >
     <div class="info">
+
+          <img id="image"src = {{prod.image}} alt="produtos">
       <h5>
-        {{prod.nome}}
+        {{prod.name}}
       </h5>
       <p id="descricao">
         {{prod.descricao}}
       </p>
       <p id="valor">
-        {{prod.valor}}<br>
+      R$ {{prod.preco}}<br>
       </p>
+      <hr>
       <div class="d-flex">
-        <p id="btn"  type="button">Apple</p>
-        <p id="btn2" type="button">MacBook</p>
+        <p id="btn2">
+          {{prod.categoria}}<br>
+        </p>
       </div>
   </div>
-</div>
-</div>
-<ng-template #templatee style="margin-left:566px ;">
-
-  <div class="modal-b">
-    <ul>
-      <li><button class="btn btn-info " (click)="openModal(templateeditar)" ><i class="fas fa-edit"></i>
-       Editar</button></li>
-      <li><button class="btn btn-danger mt-1" (click)="openModal(templatedeletar)" ><i class="fas fa-trash"></i>
-        Deletar</button></li>
-        </ul>
   </div>
-</ng-template>
-</div>
-<div class="d-flex" id="footer">
+  </div>
+
+
+ <div class="d-flex" id="footer">
   <ul>
     <li><p id="footer1">powered by</p></li>
     <li><p id="footer2">DOUBLEIT</p></li>
   </ul>
-</div>
-</div>
-
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left "style=" font-size: 18px; font-weight: bold;color:#1F1F1F; margin-left: 20px;margin-top: 20px;">Novo Produto.</h4>
-    <button type="button" class="btn-close close pull-right" aria-label="Close" style="font-size: 16px; margin-top: 10px; margin-right: 10px;" (click)="modalRef?.hide()">
-      <span aria-hidden="true" class="visually-hidden">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-<form [formGroup]="formValue" (ngSubmit)="addProduto()">
-  <div class="form-group" id="forms1">
-   <input class="form-control" type="name" placeholder="Nome" style="color:'#626262';font-size:16px;height:44px; width:529px;font-family:Lucida Console" formControlName="nome" name="email" />
-   </div>
- <div class="form-group" id="forms2">
-  <input class="form-control" style="color:'#626262';font-size:16px;height:88px; width:529px ;font-family:Lucida Console" placeholder="Descricao"
-  formControlName="descricao" name="descricao" />
-</div>
-<div class="form-group" id="forms2">
-  <input class="form-control" style="color:'#626262';font-size:16px;height:44px;width:256px; font-family:Lucida Console" type="name"  placeholder="Preço"
-  formControlName="valor" name="valor" /><input class="form-control" style="color:'#626262';font-size:16px;height:44px;width:256px; margin-top:-44px;margin-left:270px;font-family:Lucida Console" type="name"  placeholder="Data Remessa"
-  formControlName="data" name="data"  />
-</div>
-<div class="form-group" id="forms2">
-  <input class="form-control" style="color:'#626262';font-size:16px;height:44px;font-family:Lucida Console" type="name"  placeholder="Categorias ( separe-as por vírgulas )"
-  formControlName="categorias" name="categoria" />
-</div>
-<div class="form-group" id="forms2">
-  <input class="form-control" style="color:'#626262';font-size:16px;height:246px;font-family:Lucida Console" type="name"  placeholder="Arraste uma imagem ou"
-  formControlName="imagem" name="imagem"/>
-  <a href="">Selecionar</a>
-</div>
-  <button type="submit" class="btn-cancelar"  value="ENTRAR" name="">Cancelar</button>
-  <button type="button" class="btn-salvar"  (click)="addProduto()">Salvar</button>
-</form>
-</div>
-</ng-template>
+ </div>
 
 
-
-<ng-template #templateeditar>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left "style=" font-size: 18px; font-weight: bold;color:#1F1F1F; margin-left: 20px;margin-top: 20px;">Editar Produto.</h4>
-    <button type="button" class="btn-close close pull-right" style=" padding-top: 40px; margin-top: 30px; margin-right: 10px;" aria-label="Close" style="font-size: 16px;" (click)="modalRef?.hide()">
-      <span aria-hidden="true" class="visually-hidden">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-<form [formGroup]="formValue" (ngSubmit)="addProduto()">
-  <div class="form-group" id="forms1">
-   <input class="form-control" type="name" placeholder="Nome" style="color:'#626262';font-size:16px;height:44px; width:529px;font-family:Lucida Console" formControlName="nome" name="email" />
-   </div>
- <div class="form-group" id="forms2">
-  <input class="form-control" style="color:'#626262';font-size:16px;height:88px; width:529px ;font-family:Lucida Console" placeholder="Descricao"
-  formControlName="descricao" name="descricao" />
-</div>
-<div class="form-group" id="forms2">
-  <input class="form-control" style="color:'#626262';font-size:16px;height:44px;width:256px; font-family:Lucida Console" type="name"  placeholder="Preço"
-  formControlName="valor" name="valor" /><input class="form-control" style="color:'#626262';font-size:16px;height:44px;width:256px; margin-top:-44px;margin-left:270px;font-family:Lucida Console" type="name"  placeholder="Data Remessa"
-  formControlName="data" name="data"  />
-</div>
-<div class="form-group" id="forms2">
-  <input class="form-control" style="color:'#626262';font-size:16px;height:44px;font-family:Lucida Console" type="name"  placeholder="Categorias ( separe-as por vírgulas )"
-  formControlName="categorias" name="categoria" />
-</div>
-<div class="form-group" id="forms2">
-  <input class="form-control" style="color:'#626262';font-size:16px;height:246px;font-family:Lucida Console" type="name"  placeholder="Arraste uma imagem ou"
-  formControlName="imagem" name="imagem"/>
-  <a href="">Selecionar</a>
-</div>
-  <button type="submit" class="btn-cancelar" >Cancelar</button>
-  <button type="button" class="btn-salvar"  >Salvar</button>
-</form>
-</div>
-</ng-template>
-
-
-<ng-template #templatedeletar>
-    <div class="modal-vt">
-      <h4 class="modal-title pull-left" style="font-weight: bold;">Remover Produto</h4>
-      <hr>
-      <button type="button" class="btn-close close pull-right" style=" margin-right: 20px ; margin-top: -50px ;" aria-label="Close" (click)="modalRef?.hide()">
-        <span aria-hidden="true" class="visually-hidden">&times;</span>
-      </button>
+ <!-- addProduto Modal -->
+ <div class="modal fade" id="addProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">Novo Produto.</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="proDetail">
+          <div class="mb-1" style="margin-top: -15px;">
+            <label for="exampleInputEmail1" class="form-label"></label>
+            <input type="text" formControlName="name" class="form-control" placeholder="Nome" id="exampleInputEmail1" aria-describedby="emailHelp"required>
+          </div>
+          <div class="mb-1" >
+            <label for="exampleInputEmail1" class="form-label"></label>
+            <input type="text" style="height:88px;" formControlName="descricao" class="form-control" placeholder="Descrição" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+          </div>
+          <div class="mb-4"style="width:265px; float: left;">
+            <label for="exampleInputPassword1" class="form-label"></label>
+            <input type="text" formControlName="preco" class="form-control" placeholder="Preco" id="exampleInputPassword1"required>
+          </div>
+          <div class="mb-4"style="width:265px; float: left;margin-left: 16px">
+            <label for="exampleInputPassword1" class="form-label"></label>
+            <input type="text" formControlName="data" class="form-control" placeholder="Data Remessa" id="exampleInputPassword1"required>
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputPassword1" class="form-label"></label>
+            <input type="text" formControlName="categoria" class="form-control" placeholder="Categoria" id="exampleInputPassword1"required>
+          </div>
+          <div class="mb-1"style="width:546px;height:246px; float: left;" >
+            <input class="form-control" style="color:'#626262';font-size:16px;height:246px;font-family:Lucida Console;padding-left: 112px" type="name"  placeholder="Arraste uma imagem ou"
+            formControlName="image" name="imagem"/>
+            <button id="butc" class="btn btn-primary">Selecionar</button>
+          </div>
+        </form>
+        <div class="footer">
+          <button id="but" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="but2" type="button" class="btn btn-primary"(click)="addProduto()"data-bs-dismiss="modal">Salvar</button>
+        </div>
+      </div>
     </div>
-    <div class="modal-bt"style=" margin-top: -250px; padding: 40px; margin-left: 50px ; ">
-      Você realmente deseja remover esse Produto?
+  </div>
+</div>
+
+<!-- editarProduto Modal -->
+<div class="modal fade" id="editeProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">Editar Produto.</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="proDetail">
+          <div class="mb-1" style="margin-top: -15px;">
+            <label for="exampleInputEmail1" class="form-label"></label>
+            <input type="text" formControlName="name" class="form-control" placeholder="Nome" id="exampleInputEmail1" aria-describedby="emailHelp"required>
+          </div>
+          <div class="mb-1" >
+            <label for="exampleInputEmail1" class="form-label"></label>
+            <input type="text" style="height:88px;" formControlName="descricao" class="form-control" placeholder="Descrição" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+          </div>
+          <div class="mb-4"style="width:265px; float: left;">
+            <label for="exampleInputPassword1" class="form-label"></label>
+            <input type="text" formControlName="preco" class="form-control" placeholder="Preco" id="exampleInputPassword1"required>
+          </div>
+          <div class="mb-4"style="width:265px; float: left;margin-left: 16px">
+            <label for="exampleInputPassword1" class="form-label"></label>
+            <input type="text" formControlName="data" class="form-control" placeholder="Data Remessa" id="exampleInputPassword1"required>
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputPassword1" class="form-label"></label>
+            <input type="text" formControlName="categoria" class="form-control" placeholder="Categoria" id="exampleInputPassword1"required>
+          </div>
+          <div class="mb-1"style="width:546px;height:246px; float: left;" >
+            <input class="form-control" style="color:'#626262';font-size:16px;height:246px;font-family:Lucida Console;padding-left: 112px" type="name"  placeholder="Arraste uma imagem ou"
+            formControlName="image" name="imagem"/>
+            <button id="butc" class="btn btn-primary">Selecionar</button>
+          </div>
+        </form>
+        <div class="footer">
+          <button id="but" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="but2" type="button" class="btn btn-primary"(click)="updateProduto()"data-bs-dismiss="modal">Salvar</button>
+        </div>
+      </div>
     </div>
-    <button class="btn btn-danger" style=" width: 120px;">Cancelar</button>
-    <button class="btn btn-info"style=" width: 120px;">Confirmar</button>
-  </ng-template>
+  </div>
+</div>
 
 
+</div>
 
 

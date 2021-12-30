@@ -1,11 +1,12 @@
-export class ProdutosData{
+export class Produto{
   id: number = 0;
-  nome: string = '' ;
+  name: string = '' ;
   descricao: string ='';
   data: number = 0 ;
   categoria: string ='' ;
-  imagem:  string ='';
-  valor: string =''
+  image:  string ='';
+  preco: number =0
+  service:  string ='';
 }
 
 

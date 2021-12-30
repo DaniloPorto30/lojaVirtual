@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  addproURL : 'http://localhost:8081/pro/addProduto',
+  getproURL : 'http://localhost:8081/pro/getAll',
+  updatproUrl : 'http://localhost:8081/pro/updateProduto',
+  deletproUrl : 'http://localhost:8081/pro/deleteProdutoById',
 };
 
 /*

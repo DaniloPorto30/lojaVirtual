@@ -35,43 +35,6 @@
       "imagem": "https://m.media-amazon.com/images/I/31WWqmW1WaL._AC_.jpg",
       "acao": "",
       "valor": "R$ 12.499,00"
-    },
-    {
-      "id": 15,
-      "nome": "ggggggg",
-      "descricao": "hhh",
-      "data": "hhh",
-      "imagem": "hhh",
-      "acao": "",
-      "valor": "hhh"
-    },
-    {
-      "id": 16,
-      "nome": "eweweweww",
-      "descricao": "wewew",
-      "data": "kjkjkj",
-      "categoria": "hjjhjhj",
-      "imagem": "kjkjk",
-      "acao": "",
-      "valor": "kkkk"
-    },
-    {
-      "id": 17,
-      "nome": "sdds",
-      "descricao": "sdsadsa",
-      "data": "21212",
-      "categoria": "212121",
-      "imagem": "2121212121",
-      "valor": "1212121"
-    },
-    {
-      "id": 18,
-      "nome": "gg",
-      "descricao": "ggg",
-      "data": "4444",
-      "categoria": "44444",
-      "imagem": "444444444",
-      "valor": "444"
     }
   ]
 }
