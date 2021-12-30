@@ -45,16 +45,15 @@
   <div class="modal fade" id="deletar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <p class="modal-title" id="staticBackdropLabel">Remover Produto.</p>
+        <div id="modal-2" class="modal-header">
+          <p class="modal-title" id="exampleModalLabel">Remover Produto.</p>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-dialog modal-dialog-centered">
          <p>Você realmente deseja excluir esse produto ?</p>
-        </div>
-        <div class="modal-footer">
-          <button id="btn1" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="btn2"(click)=" deleteProduto(prod)" type="button" class="btn btn-outline-secondary">Excluir</button>
+
+          <br><button id="btn1" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="btn2"(click)=" deleteProduto(prod)" type="button" class="btn btn-outline-secondary">Confirmar</button>
         </div>
 
       </div>
@@ -77,7 +76,7 @@
  <div class="modal fade" id="addProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div id="modal-1" class="modal-header">
         <p class="modal-title" id="exampleModalLabel">Novo Produto.</p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -122,7 +121,7 @@
 <div class="modal fade" id="editeProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div id="modal-1" class="modal-header">
         <p class="modal-title" id="exampleModalLabel">Editar Produto.</p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
