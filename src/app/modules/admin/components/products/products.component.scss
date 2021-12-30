@@ -63,7 +63,6 @@
 
 #butc{
   background-color: #725172;
-  position:absolute;
   margin-top:-145px;
   margin-left: 320px;
   height: 44px;
@@ -72,7 +71,39 @@
   border: 1px solid #ffffff;
   border-radius: 6px;
 }
-
+.modal-footer #btn1{
+width: 103px;
+height: 44px;
+background-color: #ffffff;
+border: 1px solid #725172;
+border-radius: 6px;
+opacity: 1;
+color: #725172;
+}
+.modal-footer button{
+  margin:10px;
+  font-size: 16px;
+}
+.modal-footer #btn2{
+width: 111px;
+height: 44px;
+background: #725172 0% 0% no-repeat padding-box;
+border-radius: 6px;
+opacity: 1;
+color:  #ffffff;
+}
+.modal-header p{
+  left: 473px;
+ font-size: 18px;
+}
+.modal-dialog-centered p{
+  font-size: 18px;
+  text-align: left;
+  letter-spacing: 0px;
+  color: #1F1F1F;
+  opacity: 1;
+  padding-top: 40px;
+}
 .info hr{
   margin-left: 20px;
   width:180px;
@@ -89,14 +120,36 @@
   width: 90%;
   border-radius: 5px;
   margin-top: 20px;
-
 }
+.produtos-grid .image #editar{
+ color: purple;
+ font-size: 27px;
+ margin-bottom: 10px ;
+ width: 137px;
+}
+.produtos-grid .image #delete{
+  color: red;
+  font-size: 27px;
+  margin-top: -20px;
+  width: 137px;
+ }
+ .produtos-grid .image hr{
+  margin-top:-0.1px ;
+  width: 137px;
+ }
+ .produtos-grid .image b{
+  color: #1F1F1F;
+  font-size: 16px;
+  margin-left: 10px ;
+ }
 .produtos-grid img {
   width: 239px;
   height: 138px;
   margin-left: 25px;
 }
-
+#excluir{
+  width: 471px;
+}
 .produtos-grid .box {
   width: 295px;
   height: 392px;
